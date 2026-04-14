@@ -715,6 +715,10 @@ fn check_features(
     include_paths: Vec<PathBuf>,
     infos: &[(&'static str, Option<&'static str>, &'static str)],
 ) {
+    if env::var("HOST") != env::var("TARGET") {
+        return;
+    }
+
     let mut includes_code = String::new();
     let mut main_code = String::new();
 
